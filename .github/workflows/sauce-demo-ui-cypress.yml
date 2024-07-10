@@ -25,45 +25,6 @@ jobs:
       - name: Install
         run: npm ci
         
-      - name: Check if Chrome is Installed
-        run: |
-          if ! command -v google-chrome &> /dev/null; then
-            wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-            sudo apt-get update
-            sudo apt-get install google-chrome-stable -y
-          else
-            echo "Chrome is already installed."
-          fi
-
-      - name: Check if Firefox is Installed
-        run: |
-          if ! command -v firefox &> /dev/null; then
-            sudo apt-get update && sudo apt-get install firefox -y
-          else
-            echo "Firefox is already installed."
-          fi
-
-      - name: Check if Microsoft Edge is Installed
-        run: |
-          if ! command -v microsoft-edge &> /dev/null; then
-            curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-            sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-            echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" | sudo tee /etc/apt/sources.list.d/microsoft-edge-dev.list
-            sudo apt update
-            sudo apt install microsoft-edge-dev -y
-          else
-            echo "Microsoft Edge is already installed."
-          fi
-
-      - name: Check if Electron is Installed
-        run: |
-          if ! command -v electron &> /dev/null; then
-            npm install -g electron
-          else
-            echo "Electron is already installed."
-          fi
-
       - name: Run Sauce Demo UI Cypress Tests
         run: CYPRESS_username=${{ secrets.USERNAME }} CYPRESS_password=${{ secrets.PASSWORD }}  npm run cypress:run:all
 
