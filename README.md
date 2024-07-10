@@ -21,6 +21,7 @@ Key features of this project include:
 
 - Design Pattern - Page Object Model (POM): Enhances code maintainability and readability by organizing test interactions in separate classes for different pages.
 - ESLint and Prettier Integration: Ensures code quality and consistency. ESLint helps in identifying and fixing problems in the JavaScript code, while Prettier automatically formats the code to maintain a consistent style.
+- Cross-browser Testing: The CI workflow supports running test cases on four browsers: Chrome, Firefox, Edge, and Electron.
 
 ## Project Structure
 ```shell
