@@ -9,6 +9,9 @@ on:
 jobs:
   sauce-demo-ui-cypress:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chrome, firefox, edge, electron]
     defaults:
       run:
         working-directory: ./

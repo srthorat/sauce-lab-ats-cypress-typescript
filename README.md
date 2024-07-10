@@ -351,6 +351,18 @@ jobs:
           name: cypress-reports
           path: cypress/reports
 ```
+#### Key Steps in the Workflow
+- Triggers: The workflow runs on any push or pull request to the develop branch.
+- Environment Variables: The CYPRESS_username and CYPRESS_password environment variables are set using the secrets added to the GitHub repository.
+- Checkout: The code is checked out from the repository.
+- Setup Node.js: Node.js version 18.7.0 is set up.
+- Install Dependencies: The required dependencies are installed using npm install.
+- Run Cypress Tests: The Cypress tests are executed across all specified browsers using the npm run cypress:run:all script.
+#### Running the Tests using Github action and Viewing Reports
+- No Need to Clone: There is no need to clone the code and run it - on your computer. You can directly go to the repository and run the GitHub Action.
+- Run the Action: Once the action is completed, go to the workflow run tab.
+- Download Reports: Download the report to see the results.
+
 #### Configuring Environment Variables
 Environment variables for your tests can be set up in the GitHub Actions workflow file to securely manage sensitive information such as usernames and passwords.
 
