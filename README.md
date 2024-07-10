@@ -286,8 +286,61 @@ jobs:
       run: npm run format
 ```
 ### E2E UI Testing Workflow
-The e2e-ui-cypress.yml workflow runs the Cypress end-to-end tests across multiple browsers.
+The sauce-demo-ui-cypress.yml workflow runs the Cypress end-to-end tests across multiple browsers.
 ```shell
+    name: Sauce Demo UI Cypress Tests
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  sauce-demo-ui-cypress:
+    runs-on: ubuntu-latest
+    env:
+        CYPRESS_username: ${{ secrets.username }}
+        CYPRESS_password: ${{ secrets.password }}
+    defaults:
+      run:
+        working-directory: ./
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install
+        run: npm ci
+
+      - name: Run Sauce Demo UI Cypress Tests
+        run: CYPRESS_username=username CYPRESS_password=password npm run cypress:run:all
+
+      - name: Upload Cypress Videos
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-videos
+          path: cypress/videos
+
+      - name: Upload Cypress Screenshots
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+
+      - name: Upload Cypress Reports
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-reports
+          path: cypress/reports
 ```
 #### Configuring Environment Variables
 Environment variables for your tests can be set up in the GitHub Actions workflow file to securely manage sensitive information such as usernames and passwords.
