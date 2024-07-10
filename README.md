@@ -137,6 +137,8 @@ The project uses Cypress with Mochawesome reporter to generate detailed reports 
 
 - Logs: Detailed logs for debugging purposes are also available, providing insights into test execution and any errors encountered.
 
+Note: There is all redy existing issue with firefox for screenshot and recording https://github.com/cypress-io/cypress/issues/18415 - Video functionality is not working on Firefox 93 and above
+
 ## Page Object Model
 The Page Object Model (POM) design pattern is implemented to enhance code maintainability and readability. Key page objects include:
 - BasePage: Contains common methods used by other page objects.
