@@ -9,9 +9,6 @@ on:
 jobs:
   sauce-demo-ui-cypress:
     runs-on: ubuntu-latest
-    env:
-        CYPRESS_username: ${{ secrets.USERNAME }}
-        CYPRESS_password: ${{ secrets.PASSWORD }}
     defaults:
       run:
         working-directory: ./
@@ -29,7 +26,7 @@ jobs:
         run: npm ci
 
       - name: Run Sauce Demo UI Cypress Tests
-        run: CYPRESS_username=username CYPRESS_password=password npm run cypress:run:all
+        run: CYPRESS_username=${{ secrets.USERNAME }} CYPRESS_password=${{ secrets.PASSWORD }}  npm run cypress:run:all
 
       - name: Upload Cypress Videos
         if: always()
