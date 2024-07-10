@@ -91,8 +91,8 @@ Key features of this project include:
 ## Setup Instructions
 ### Clone the Repository
 ```shell
-    git clone <repository-url>
-    cd <repository-directory>
+    git clone https://github.com/srthorat/sauce-lab-ats-cypress-typescript.git
+    cd sauce-lab-ats-cypress-typescript
 ```
 ### Install Dependencies
 ```shell
