@@ -256,6 +256,16 @@ This project uses GitHub Actions for Continuous Integration and Continuous Deplo
 GitHub Actions are defined in YAML files located in the .github/workflows/ directory. The workflows are triggered on specific events, such as pushes to the repository or pull requests.
 
 ### Workflow Files
+#### Add Secrets:
+
+1. Go to your GitHub repository.
+2. Navigate to Settings > Secrets and variables > Actions.
+3. Click on New repository secret and add the following secrets:
+    - username: Your Sauce Labs demo website username.
+    - password: Your Sauce Labs demo website password.
+
+Note: I have all redy addy in my GitHub Repo
+
 #### Quality Workflow
 The quality.yml workflow ensures code quality by running linting and formatting checks using ESLint and Prettier.
 ```shell
@@ -288,7 +298,7 @@ jobs:
 ### E2E UI Testing Workflow
 The sauce-demo-ui-cypress.yml workflow runs the Cypress end-to-end tests across multiple browsers.
 ```shell
-    name: Sauce Demo UI Cypress Tests
+name: Sauce Demo UI Cypress Tests
 
 on:
   workflow_dispatch:
@@ -299,9 +309,6 @@ on:
 jobs:
   sauce-demo-ui-cypress:
     runs-on: ubuntu-latest
-    env:
-        CYPRESS_username: ${{ secrets.username }}
-        CYPRESS_password: ${{ secrets.password }}
     defaults:
       run:
         working-directory: ./
@@ -319,7 +326,7 @@ jobs:
         run: npm ci
 
       - name: Run Sauce Demo UI Cypress Tests
-        run: CYPRESS_username=username CYPRESS_password=password npm run cypress:run:all
+        run: CYPRESS_username=${{ secrets.USERNAME }} CYPRESS_password=${{ secrets.PASSWORD }}  npm run cypress:run:all
 
       - name: Upload Cypress Videos
         if: always()
