@@ -10,8 +10,8 @@ jobs:
   sauce-demo-ui-cypress:
     runs-on: ubuntu-latest
     env:
-        CYPRESS_username: ${{ secrets.username }}
-        CYPRESS_password: ${{ secrets.password }}
+        CYPRESS_username: ${{ secrets.USERNAME }}
+        CYPRESS_password: ${{ secrets.PASSWORD }}
     defaults:
       run:
         working-directory: ./
