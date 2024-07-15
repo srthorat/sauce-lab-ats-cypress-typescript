@@ -53,14 +53,6 @@ jobs:
         run: |
           mkdir -p public/cypress
           cp -r cypress/reports/* public/cypress/
-          mkdir -p public/cypress/chrome
-          mkdir -p public/cypress/edge
-          mkdir -p public/cypress/electron
-          mkdir -p public/cypress/firefox
-          cp -r reports/chrome/* public/cypress/chrome/
-          cp -r reports/edge/* public/cypress/edge/
-          cp -r reports/electron/* public/cypress/electron/
-          cp -r reports/firefox/* public/cypress/firefox/
             
       - name: Create custom index.html
         run: |
