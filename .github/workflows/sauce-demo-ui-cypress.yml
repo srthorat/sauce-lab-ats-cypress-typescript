@@ -57,7 +57,6 @@ jobs:
       - name: Create custom index.html
         run: |
           echo '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Test Reports</title></head><body><h1>Test Reports</h1><ul>' > public/index.html
-          echo '<li><a href="./playwright/index.html">Playwright Report</a></li>' >> public/index.html
           echo '<li><a href="./cypress/chrome/chrome-ats-report.html">Chrome Report</a></li>' >> public/index.html
           echo '<li><a href="./cypress/edge/edge-ats-report.html">Edge Report</a></li>' >> public/index.html
           echo '<li><a href="./cypress/electron/electron-ats-report.html">Electron Report</a></li>' >> public/index.html
